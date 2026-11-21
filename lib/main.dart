@@ -1,10 +1,13 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:material_ui/material_ui.dart';
 
+import 'core/bootstrap/bootstrap_app.dart';
 import 'core/utils/locale_manager.dart';
 import 'my_app.dart';
 
-void main() {
+void main() async {
+  await bootstrapApp();
+
   runApp(
     EasyLocalization(
       path: LocaleManager.translationPath,
