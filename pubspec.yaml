@@ -25,6 +25,8 @@ dependencies:
   shared_preferences: ^2.5.6
   get_it: ^9.3.0
   path_provider: ^2.1.6
+  flutter_svg: ^2.5.0
+  flutter_native_splash: ^2.4.8
 
 dev_dependencies:
   flutter_test:
@@ -46,10 +48,7 @@ flutter:
   fonts:
     - family: Cairo
       fonts:
-        - asset: fonts/Schyler-Regular.ttf
-        - asset: fonts/Schyler-Italic.ttf
+        - asset: assets/fonts/Cairo/Cairo-Regular.ttf
     - family: Inter
       fonts:
-        - asset: fonts/TrajanPro.ttf
-        - asset: fonts/TrajanPro_Bold.ttf
-          weight: 700
+        - asset: assets/fonts/Inter/Inter_18pt-Regular.ttf

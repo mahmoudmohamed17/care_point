@@ -3,7 +3,8 @@ class AppImages {
 
   static const String _path = 'assets/images';
 
-  static const String logo = '$_path/logo.png';
+  static const String splash = '$_path/spalsh.png';
+  static const String halfCircleFrame = '$_path/half_circle_frame.svg';
 }
 
 // class AppIcons {
