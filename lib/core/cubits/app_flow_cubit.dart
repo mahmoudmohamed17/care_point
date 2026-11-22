@@ -6,13 +6,14 @@ import 'app_flow_state.dart';
 
 @Singleton()
 class AppFlowCubit extends HydratedCubit<AppFlowState> {
-  AppFlowCubit() : super(AppFlowState.onboarding);
+  AppFlowCubit() : super(AppFlowState.splash);
 
   static const String _stateKey = 'flow_state';
 
-  /// Resolves the target route for splash or initial entry point based on [state].
   String get targetRoute {
     switch (state) {
+      case AppFlowState.splash:
+        return AppRoutes.splash;
       case AppFlowState.onboarding:
         return AppRoutes.onboarding;
       case AppFlowState.home:
@@ -20,19 +21,18 @@ class AppFlowCubit extends HydratedCubit<AppFlowState> {
     }
   }
 
-  /// Resolves redirection logic based on current [AppFlowState] and [currentPath].
+  /// Resolves redirection logic based on current `AppFlowState` and `currentPath`.
   ///
   /// Covers all flow scenarios:
   /// - Splash screen: returns `null` so splash animations/initialization can finish.
   /// - [AppFlowState.login]: guards all other routes and redirects to login (or allows signup).
   /// - [AppFlowState.home]: guards auth routes and redirects to home.
   String? resolveRedirect(String currentPath) {
-    // Keep user on the splash screen while it performs animation/initialization.
-    // if (currentPath == AppRoutes.splash) {
-    //   return null;
-    // }
-
     switch (state) {
+      // Always show the splash screen
+      case AppFlowState.splash when currentPath == AppRoutes.splash:
+        return null;
+
       // Guard: onboarding not done → always land on onboarding.
       case AppFlowState.onboarding when currentPath != AppRoutes.onboarding:
         return AppRoutes.onboarding;
@@ -47,8 +47,6 @@ class AppFlowCubit extends HydratedCubit<AppFlowState> {
     }
   }
 
-  /// Marks onboarding as complete, persists the state, and moves to [AppFlowState.home].
-  /// GoRouter's refreshListenable will re-evaluate the redirect automatically.
   void completeOnboarding() {
     emit(AppFlowState.home);
   }

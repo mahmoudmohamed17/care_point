@@ -1,4 +1,7 @@
 enum AppFlowState {
+  // Show it everytime to the user
+  splash,
+
   /// User has not completed onboarding yet.
   onboarding,
 

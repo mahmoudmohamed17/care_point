@@ -5,6 +5,8 @@ formatter:
   trailing_commas: "preserve"
 
 analyzer:
+  errors: 
+     unused_element_parameter: ignore
   exclude:
     - build/**
     - android/**
@@ -18,6 +20,7 @@ linter:
   rules:
     prefer_const_constructors: true
     avoid_print: true
+    avoid_unused_constructor_parameters: true
     prefer_const_constructors_in_immutables: true
     prefer_const_literals_to_create_immutables: true
     prefer_single_quotes: true

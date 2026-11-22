@@ -1,6 +1,7 @@
 import 'package:go_router/go_router.dart';
 import 'package:material_ui/material_ui.dart';
 
+import '../../features/splash/splash_screen.dart';
 import '../cubits/app_flow_cubit.dart';
 import '../di/di.dart';
 import 'app_routes.dart';
@@ -19,7 +20,7 @@ class AppRouter {
       routes: [
         _route(
           AppRoutes.splash,
-          builder: (context, state) => const Placeholder(),
+          builder: (context, state) => const SplashScreen(),
         ),
       ],
     );
