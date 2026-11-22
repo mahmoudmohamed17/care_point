@@ -1,101 +1,82 @@
 import 'app_strings.dart';
 
+/// Every method returns a translation KEY (or null when valid).
+/// Translate at the call site: `Validators.validateEmail(v)?.tr()`
 abstract final class Validators {
+  static const int minPasswordLength = 8;
+  static const int minNameLength = 2;
+
   static final RegExp _emailRegex = RegExp(
     r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$',
   );
 
-  static final RegExp _phoneRegex = RegExp(
-    r'^\+?[0-9]{10,15}$',
-  );
+  static final RegExp _phoneRegex = RegExp(r'^\+?[0-9]{10,15}$');
 
-  /// Validates that a field is not null, empty, or purely whitespace.
-  static String? validateRequired(String? value, [String? customMessage]) {
+  /// Not null, empty, or whitespace only.
+  static String? validateRequired(String? value) {
     if (value == null || value.trim().isEmpty) {
-      return customMessage ?? AppStrings.fieldRequired;
+      return AppStrings.validationRequired;
     }
     return null;
   }
 
-  /// Alias for [validateRequired].
-  static String? requiredField(String? value) => validateRequired(value);
-
-  /// Validates an email address.
   static String? validateEmail(String? value) {
     final requiredError = validateRequired(value);
     if (requiredError != null) return requiredError;
 
     if (!_emailRegex.hasMatch(value!.trim())) {
-      return AppStrings.invalidEmail;
+      return AppStrings.validationInvalidEmail;
     }
     return null;
   }
 
-  /// Alias for [validateEmail].
-  static String? emailValidator(String? value) => validateEmail(value);
+  /// Use only on register / change-password, not on login.
+  /// The password is intentionally NOT trimmed.
+  static String? validatePassword(String? value) {
+    if (value == null || value.isEmpty) return AppStrings.validationRequired;
 
-  /// Validates a password with configurable security constraints.
-  static String? validatePassword(
-    String? value, {
-    int minLength = 8,
-    bool requireNumber = false,
-    bool requireUppercase = false,
-    bool requireSpecialChar = false,
-  }) {
-    final requiredError = validateRequired(value);
-    if (requiredError != null) return requiredError;
-
-    final trimmed = value!.trim();
-
-    if (trimmed.length < minLength) {
-      return minLength == 8 ? AppStrings.passwordTooShort : AppStrings.minLength('Password', minLength);
-    }
-    if (requireNumber && !trimmed.contains(RegExp(r'[0-9]'))) {
-      return AppStrings.passwordNeedsNumber;
-    }
-    if (requireUppercase && !trimmed.contains(RegExp(r'[A-Z]'))) {
-      return AppStrings.passwordNeedsUppercase;
-    }
-    if (requireSpecialChar && !trimmed.contains(RegExp(r'[!@#$%^&*(),.?":{}|<>]'))) {
-      return AppStrings.passwordNeedsSpecialChar;
+    if (value.length < minPasswordLength) {
+      return AppStrings.validationPasswordTooShort;
     }
     return null;
   }
 
-  /// Alias for [validatePassword].
-  static String? passwordValidator(String? value) => validatePassword(value);
+  static String? validateConfirmPassword(String? value, String? original) {
+    if (value == null || value.isEmpty) return AppStrings.validationRequired;
 
-  /// Validates that confirm password matches [originalPassword].
-  static String? validateConfirmPassword(String? value, String? originalPassword) {
-    final requiredError = validateRequired(value);
-    if (requiredError != null) return requiredError;
-
-    if (value != originalPassword) {
-      return AppStrings.passwordsDontMatch;
-    }
+    if (value != original) return AppStrings.validationPasswordsDontMatch;
     return null;
   }
 
-  /// Validates phone numbers (supports optional leading `+` and 10 to 15 digits).
+  /// Optional leading `+`, 10 to 15 digits. Accepts Arabic-Indic digits.
   static String? validatePhone(String? value) {
     final requiredError = validateRequired(value);
     if (requiredError != null) return requiredError;
 
-    final cleanPhone = value!.replaceAll(RegExp(r'[\s\-()]'), '');
-    if (!_phoneRegex.hasMatch(cleanPhone)) {
-      return AppStrings.invalidPhone;
+    final normalized = toWesternDigits(value!).replaceAll(RegExp(r'[\s\-()]'), '');
+    if (!_phoneRegex.hasMatch(normalized)) {
+      return AppStrings.validationInvalidPhone;
     }
     return null;
   }
 
-  /// Validates a full name with minimum length check.
-  static String? validateName(String? value, {int minLength = 3}) {
+  static String? validateName(String? value) {
     final requiredError = validateRequired(value);
     if (requiredError != null) return requiredError;
 
-    if (value!.trim().length < minLength) {
-      return AppStrings.nameTooShort;
+    if (value!.trim().length < minNameLength) {
+      return AppStrings.validationInvalidName;
     }
     return null;
+  }
+
+  /// Public so you can normalize the phone before saving it to Supabase.
+  static String toWesternDigits(String input) {
+    const arabicIndic = '٠١٢٣٤٥٦٧٨٩';
+    var result = input;
+    for (var i = 0; i < arabicIndic.length; i++) {
+      result = result.replaceAll(arabicIndic[i], '$i');
+    }
+    return result;
   }
 }
