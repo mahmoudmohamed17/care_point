@@ -1,6 +1,7 @@
 import 'package:go_router/go_router.dart';
 import 'package:material_ui/material_ui.dart';
 
+import '../../features/onboarding/presentation/onboarding_screen.dart';
 import '../../features/splash/splash_screen.dart';
 import '../cubits/app_flow_cubit.dart';
 import '../di/di.dart';
@@ -20,7 +21,15 @@ class AppRouter {
       routes: [
         _route(
           AppRoutes.splash,
-          builder: (context, state) => const SplashScreen(),
+          builder: (context, state) => SplashScreen(
+            onFinished: () {
+              // Navigate to the Onboarding.
+            },
+          ),
+        ),
+        _route(
+          AppRoutes.onboarding,
+          builder: (context, state) => const OnboardingScreen(),
         ),
       ],
     );

@@ -163,12 +163,12 @@
   },
   "onboarding": {
     "slide1Title": "Find the right doctor",
-    "slide1Description": "Browse specialists, read profiles and choose the doctor who fits your needs.",
+    "slide1Description": "Browse specialists, view their profiles, and choose the doctor who fits your needs.",
     "slide2Title": "Book in seconds",
-    "slide2Description": "Pick an available time slot and confirm your appointment with a few taps.",
-    "slide3Title": "Never miss a visit",
-    "slide3Description": "Get reminders and add appointments to your calendar automatically.",
-    "getStarted": "Get started"
+    "slide2Description": "Pick an available time slot and confirm your appointment in a few simple steps.",
+    "slide3Title": "Never miss an appointment",
+    "slide3Description": "Get timely reminders and have your appointments added to your calendar automatically.",
+    "getStarted": "Get Started"
   },
   "language": {
     "chooseTitle": "Choose your language",

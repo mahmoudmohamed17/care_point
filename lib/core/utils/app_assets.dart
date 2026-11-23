@@ -5,6 +5,9 @@ class AppImages {
 
   static const String splash = '$_path/splash.png';
   static const String halfCircleFrame = '$_path/half_circle_frame.svg';
+  static const String onboardingBooking = '$_path/onboarding_booking.svg';
+  static const String onboardingDoctor = '$_path/onboarding_doctor.svg';
+  static const String onboardinNotifications = '$_path/onboarding_notifications.svg';
 }
 
 class AppIcons {
