@@ -22,14 +22,18 @@ class AppRouter {
         _route(
           AppRoutes.splash,
           builder: (context, state) => SplashScreen(
-            onFinished: () {
-              // Navigate to the Onboarding.
-            },
+            onFinished: () => context.push(AppRoutes.onboarding),
           ),
         ),
         _route(
           AppRoutes.onboarding,
           builder: (context, state) => const OnboardingScreen(),
+          transition: PageTransitionType.fadeSlide,
+        ),
+        _route(
+          AppRoutes.home,
+          builder: (context, state) => const Placeholder(),
+          transition: PageTransitionType.fadeSlide,
         ),
       ],
     );
