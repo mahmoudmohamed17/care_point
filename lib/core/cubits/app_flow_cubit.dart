@@ -16,7 +16,7 @@ class AppFlowCubit extends HydratedCubit<AppFlowState> {
         return AppRoutes.splash;
       case AppFlowState.onboarding:
         return AppRoutes.onboarding;
-      case AppFlowState.home:
+      case AppFlowState.mainShell:
         return AppRoutes.home;
     }
   }
@@ -26,7 +26,7 @@ class AppFlowCubit extends HydratedCubit<AppFlowState> {
   /// Covers all flow scenarios:
   /// - Splash screen: returns `null` so splash animations/initialization can finish.
   /// - [AppFlowState.login]: guards all other routes and redirects to login (or allows signup).
-  /// - [AppFlowState.home]: guards auth routes and redirects to home.
+  /// - [AppFlowState.mainShell]: guards auth routes and redirects to home.
   String? resolveRedirect(String currentPath) {
     switch (state) {
       // Always show the splash screen
@@ -38,8 +38,8 @@ class AppFlowCubit extends HydratedCubit<AppFlowState> {
         return AppRoutes.onboarding;
 
       // Guard: onboarding done → never show onboarding again.
-      case AppFlowState.home when currentPath == AppRoutes.onboarding:
-        return AppRoutes.home;
+      case AppFlowState.mainShell when currentPath == AppRoutes.onboarding:
+        return AppRoutes.mainShell;
 
       // no redirect needed
       default:
@@ -48,7 +48,7 @@ class AppFlowCubit extends HydratedCubit<AppFlowState> {
   }
 
   void completeOnboarding() {
-    emit(AppFlowState.home);
+    emit(AppFlowState.mainShell);
   }
 
   // TODO: Delete this later

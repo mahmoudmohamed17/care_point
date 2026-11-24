@@ -47,11 +47,11 @@ class _OnboardingScreenState extends State<OnboardingScreen> with SingleTickerPr
       body: SafeArea(
         child: Column(
           children: [
+            // Skip button
             ValueListenableBuilder(
               valueListenable: _currentIndex,
               builder: (context, index, child) {
                 final isLastPage = index == _items.length - 1;
-
                 return AnimatedOpacity(
                   opacity: isLastPage ? 0.0 : 1.0,
                   duration: const Duration(milliseconds: 250),
@@ -73,8 +73,10 @@ class _OnboardingScreenState extends State<OnboardingScreen> with SingleTickerPr
               ),
             ),
             24.verticalSpace,
+
+            // Page content
             SizedBox(
-              height: 500.h,
+              height: context.screenHeight * 0.65,
               child: PageView.builder(
                 controller: _controller,
                 itemCount: _items.length,
@@ -89,17 +91,22 @@ class _OnboardingScreenState extends State<OnboardingScreen> with SingleTickerPr
               ),
             ),
             32.verticalSpace,
+
+            // Dots indicator
             SmoothPageIndicator(
               controller: _controller,
               count: _items.length,
               effect: ExpandingDotsEffect(
                 dotColor: context.colorScheme.outlineVariant,
                 activeDotColor: context.colorScheme.primary,
-                dotHeight: 12,
-                dotWidth: 12,
+                dotHeight: 10.h,
+                dotWidth: 10.w,
+                expansionFactor: 4,
               ),
             ),
             const Spacer(),
+
+            // Navigation button
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16),
               child: ValueListenableBuilder(

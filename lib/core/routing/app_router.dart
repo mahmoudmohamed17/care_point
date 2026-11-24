@@ -1,6 +1,7 @@
 import 'package:go_router/go_router.dart';
 import 'package:material_ui/material_ui.dart';
 
+import '../../features/main_shell/main_shell.dart';
 import '../../features/onboarding/presentation/onboarding_screen.dart';
 import '../../features/splash/splash_screen.dart';
 import '../cubits/app_flow_cubit.dart';
@@ -31,8 +32,8 @@ class AppRouter {
           transition: PageTransitionType.fadeSlide,
         ),
         _route(
-          AppRoutes.home,
-          builder: (context, state) => const Placeholder(),
+          AppRoutes.mainShell,
+          builder: (context, state) => const MainShell(),
           transition: PageTransitionType.fadeSlide,
         ),
       ],

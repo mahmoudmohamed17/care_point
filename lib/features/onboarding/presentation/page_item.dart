@@ -13,14 +13,14 @@ class PageItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 500.h,
+      height: context.screenHeight * 0.65,
       child: Column(
-        mainAxisSize: MainAxisSize.min,
-        spacing: 12,
+        spacing: 10.h,
         children: [
           Expanded(
             child: SvgPicture.asset(
               model.imagePath,
+              fit: BoxFit.fill,
             ),
           ),
           Text(
