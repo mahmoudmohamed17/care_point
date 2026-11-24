@@ -242,7 +242,6 @@
   },
   "home": {
     "greetingMorning": "صباح الخير، {name}",
-    "greetingAfternoon": "مساء الخير، {name}",
     "greetingEvening": "مساء الخير، {name}",
     "howAreYou": "كيف يمكننا مساعدتك اليوم؟",
     "searchHint": "ابحث عن طبيب أو تخصص",

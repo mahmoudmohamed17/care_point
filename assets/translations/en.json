@@ -242,7 +242,6 @@
   },
   "home": {
     "greetingMorning": "Good morning, {name}",
-    "greetingAfternoon": "Good afternoon, {name}",
     "greetingEvening": "Good evening, {name}",
     "howAreYou": "How can we help you today?",
     "searchHint": "Search doctors or specialties",

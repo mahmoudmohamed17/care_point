@@ -6,6 +6,7 @@ import 'package:persistent_bottom_nav_bar_v2/persistent_bottom_nav_bar_v2.dart';
 
 import '../../core/utils/app_strings.dart';
 import '../../core/utils/extensions.dart';
+import '../home/presentation/home_screen.dart';
 
 class MainShell extends StatelessWidget {
   const new({super.key});
@@ -19,7 +20,7 @@ class MainShell extends StatelessWidget {
       tabs: [
         _tab(
           context,
-          screen: (context) => const Placeholder(),
+          screen: (context) => const HomeScreen(),
           icon: const FaIcon(FontAwesomeIcons.house),
           title: AppStrings.navHome,
           activeColor: activeColor,
@@ -56,6 +57,7 @@ class MainShell extends StatelessWidget {
           padding: EdgeInsets.symmetric(vertical: 16.h),
         ),
       ),
+      stateManagement: false, // TODO: Leave this till we finish building the 4 tabs UI
     );
   }
 
@@ -68,7 +70,7 @@ class MainShell extends StatelessWidget {
     Color inactiveColor = Colors.black,
   }) {
     return PersistentTabConfig(
-      screen: SafeArea(child: screen(context)),
+      screen: screen(context),
       item: ItemConfig(
         icon: icon,
         iconSize: 22.sp,

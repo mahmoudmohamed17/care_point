@@ -230,7 +230,6 @@ abstract final class AppStrings {
 
   // --- home ---
   static const String homeGreetingMorning = 'home.greetingMorning';
-  static const String homeGreetingAfternoon = 'home.greetingAfternoon';
   static const String homeGreetingEvening = 'home.greetingEvening';
   static const String homeHowAreYou = 'home.howAreYou';
   static const String homeSearchHint = 'home.searchHint';
