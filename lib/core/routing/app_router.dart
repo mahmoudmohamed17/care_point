@@ -14,7 +14,7 @@ class AppRouter {
   static final GoRouter router = _createRouter();
 
   static GoRouter _createRouter() {
-    final appFlowCubit = getIt<AppFlowCubit>();
+    final AppFlowCubit appFlowCubit = getIt<AppFlowCubit>();
 
     return GoRouter(
       refreshListenable: GoRouterListenableBuilder(appFlowCubit.stream),

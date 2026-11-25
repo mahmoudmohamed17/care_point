@@ -1,1 +1,7 @@
-{"bricks":{"core_files":{"path":"E:/Mason/core_files"}}}
+{
+    "bricks": {
+        "core_files": {
+            "path": "E:/mason/core_files"
+        }
+    }
+}

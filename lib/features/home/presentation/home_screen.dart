@@ -1,10 +1,10 @@
-import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:material_ui/material_ui.dart';
 
+import '../../../core/utils/app_assets.dart';
 import '../../../core/utils/app_strings.dart';
-import '../../../core/utils/extensions.dart';
+import '../../../core/widgets/custom_text_field.dart';
 import 'widgets/home_app_bar.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -12,11 +12,20 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    return Scaffold(
       body: SafeArea(
         child: Column(
           children: [
-            HomeAppBar(),
+            const HomeAppBar(),
+            // TODO: apply an animation when tapping this widget
+            CustomTextField(
+              hint: AppStrings.homeSearchHint,
+              prefixIcon: SvgPicture.asset(
+                AppIcons.searchLight,
+                height: 20.h,
+                width: 20.w,
+              ),
+            ),
           ],
         ),
       ),

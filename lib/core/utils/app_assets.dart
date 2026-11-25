@@ -4,11 +4,11 @@ class AppImages {
   static const String _path = 'assets/images';
 
   static const String splash = '$_path/splash.png';
-  static const String halfCircleFrame = '$_path/half_circle_frame.svg';
-  static const String quarterCirlceFrame = '$_path/quarter_cirlce_frame.svg';
-  static const String onboardingBooking = '$_path/onboarding_booking.svg';
-  static const String onboardingDoctor = '$_path/onboarding_doctor.svg';
-  static const String onboardinNotifications = '$_path/onboarding_notifications.svg';
+  static const String halfCircleFrame = '$_path/half-circle-frame.svg';
+  static const String quarterCirlceFrame = '$_path/quarter-cirlce-frame.svg';
+  static const String onboardingBooking = '$_path/onboarding-booking.svg';
+  static const String onboardingDoctor = '$_path/onboarding-doctor.svg';
+  static const String onboardinNotifications = '$_path/onboarding-notifications.svg';
 }
 
 class AppIcons {
@@ -16,6 +16,8 @@ class AppIcons {
 
   static const String _path = 'assets/icons';
 
-  static const String logoWhite = '$_path/logo_white.png';
-  static const String logoGreen = '$_path/logo_green.png';
+  static const String logoWhite = '$_path/logo-white.png';
+  static const String logoGreen = '$_path/logo-green.png';
+  static const String searchLight = '$_path/search-light.svg';
+  static const String searchDark = '$_path/search-dark.svg';
 }
