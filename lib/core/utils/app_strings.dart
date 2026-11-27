@@ -234,6 +234,10 @@ abstract final class AppStrings {
   static const String homeHowAreYou = 'home.howAreYou';
   static const String homeSearchHint = 'home.searchHint';
   static const String homeSpecialties = 'home.specialties';
+  static const String homeSpecialtyCardiology = 'home.specialtyCardiology';
+  static const String homeSpecialtyDermatology = 'home.specialtyDermatology';
+  static const String homeSpecialtyPediatrics = 'home.specialtyPediatrics';
+  static const String homeSpecialtyDentistry = 'home.specialtyDentistry';
   static const String homeUpcomingAppointment = 'home.upcomingAppointment';
   static const String homeNoUpcomingTitle = 'home.noUpcomingTitle';
   static const String homeNoUpcomingMessage = 'home.noUpcomingMessage';

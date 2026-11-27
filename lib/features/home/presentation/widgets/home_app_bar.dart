@@ -14,7 +14,7 @@ class HomeAppBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListTile(
-      contentPadding: const EdgeInsets.all(12),
+      contentPadding: EdgeInsets.zero,
       title: Text(
         context.tr(
           AppStrings.homeGreetingMorning,
